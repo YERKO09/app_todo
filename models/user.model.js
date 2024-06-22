@@ -8,7 +8,7 @@ const findOneEmail = async (email) => {
 
 const create = async ({ username, email, password }) => {
   const query =
-    "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *";
+    "INSERT INTO users (username, email, password) VALUES (DEFAULT, $1, $2, $3) RETURNING *";
   const { rows } = await pool.query(query, [username, email, password]);
   return rows[0];
 };
