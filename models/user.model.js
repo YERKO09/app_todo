@@ -6,10 +6,10 @@ const findOneEmail = async (email) => {
   return rows[0];
 };
 
-const create = async ({ email, password }) => {
+const create = async ({ username, email, password }) => {
   const query =
-    "INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *";
-  const { rows } = await pool.query(query, [email, password]);
+    "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *";
+  const { rows } = await pool.query(query, [username, email, password]);
   return rows[0];
 };
 
